@@ -25,8 +25,7 @@
             "sprites.dungeon.floorLight2",
             "sprites.dungeon.chestOpen",
             "myTiles.tile1",
-            "sprites.dungeon.collectibleInsignia",
-            "myTiles.tile2"
+            "sprites.dungeon.collectibleInsignia"
         ],
         "displayName": "level1"
     },

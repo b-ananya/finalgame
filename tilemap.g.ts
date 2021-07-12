@@ -27,7 +27,7 @@ namespace myTiles {
 . 2 2 2 2 2 2 . . . . . . . . . 
 . 2 2 2 2 2 2 . 2 2 2 2 2 2 2 . 
 . . . . . . . . 2 . . . . . . . 
-`, [myTiles.transparency16,sprites.dungeon.floorLight2,sprites.dungeon.chestOpen,myTiles.tile1,sprites.dungeon.collectibleInsignia,myTiles.tile2], TileScale.Sixteen);
+`, [myTiles.transparency16,sprites.dungeon.floorLight2,sprites.dungeon.chestOpen,myTiles.tile1,sprites.dungeon.collectibleInsignia], TileScale.Sixteen);
         }
         return null;
     })
