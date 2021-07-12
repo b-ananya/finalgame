@@ -164,7 +164,7 @@ game.onUpdateInterval(8000, function () {
         . . . . . . . . . . . . . . . . 
         `, SpriteKind.Enemy)]
     for (let i = 0; i <= enemies.length - 1; i++) {
-        enemies[i].x = randint(0, screen.width)
+        enemies[i].x = randint(0, 160)
         enemies[i].y = randint(0, screen.height)
     }
 })
