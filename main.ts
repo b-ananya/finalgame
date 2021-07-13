@@ -1,79 +1,103 @@
+function setupLevel () {
+    clearLevel()
+    game.splash("Level " + level)
+    createMaze()
+    tiles.placeOnRandomTile(mySprite, sprites.dungeon.collectibleInsignia)
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile = sprites.createProjectileFromSprite(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . . . . . . . 2 . . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
         . . . . . . . . 2 2 . . . . . . 
-        . . . . . . . . . 2 2 2 . . . . 
+        . . . . . . . . . 2 2 . . . . . 
+        . . . . . . . . . . 2 2 . . . . 
         . . . . . . . . . . . 2 2 . . . 
-        . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
-        . . . . . . . . . . . . 2 2 . . 
-        . . . . . . . . . . 2 2 2 . . . 
-        . . . . . . . . 2 2 2 . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . . . . . . . . . . . . 2 2 2 . 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        . . . . . . . . . . . . 2 2 2 . 
+        . . . . . . . . . . . 2 2 . . . 
+        . . . . . . . . . . 2 2 . . . . 
+        . . . . . . . . . 2 2 . . . . . 
+        . . . . . . . . 2 2 . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 . . . . . . . . 
         `, mySprite, 100, 0)
     projectile = sprites.createProjectileFromSprite(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . . . . . . . . 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
         . . . . . . 2 2 . . . . . . . . 
-        . . . . 2 2 2 . . . . . . . . . 
+        . . . . . 2 2 . . . . . . . . . 
+        . . . . 2 2 . . . . . . . . . . 
         . . . 2 2 . . . . . . . . . . . 
-        . . 2 2 2 2 2 2 2 2 2 2 2 2 . . 
-        . . 2 2 . . . . . . . . . . . . 
-        . . . 2 2 2 . . . . . . . . . . 
-        . . . . . 2 2 2 . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . 2 2 2 . . . . . . . . . . . . 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 
+        . 2 2 2 . . . . . . . . . . . . 
+        . . . 2 2 . . . . . . . . . . . 
+        . . . . 2 2 . . . . . . . . . . 
+        . . . . . 2 2 . . . . . . . . . 
+        . . . . . . 2 2 . . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . . 2 . . . . . . . 
         `, mySprite, -100, 0)
     projectile = sprites.createProjectileFromSprite(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
         . . . . . . . 2 2 . . . . . . . 
         . . . . . . 2 2 2 2 . . . . . . 
-        . . . . . 2 2 2 . 2 . . . . . . 
-        . . . . . 2 . 2 . 2 2 . . . . . 
-        . . . . 2 2 . 2 . . 2 . . . . . 
-        . . . . 2 . . 2 . . 2 . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . . . 2 . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
+        . . . . . . 2 2 2 2 . . . . . . 
+        . . . . . 2 2 2 2 2 2 . . . . . 
+        . . . . 2 2 . 2 2 . 2 2 . . . . 
+        . . . 2 2 . . 2 2 . . 2 2 . . . 
+        . . 2 2 . . . 2 2 . . . 2 2 . . 
+        . 2 2 . . . . 2 2 . . . . 2 2 . 
+        2 2 . . . . . 2 2 . . . . . 2 2 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
         `, mySprite, 0, -100)
     projectile = sprites.createProjectileFromSprite(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . 2 . . . . . . . 
-        . . . . . . . . 2 . . . . . . . 
-        . . . . . . . . 2 . . . . . . . 
-        . . . . . . . . 2 . . . . . . . 
-        . . . . . . . . 2 . . . . . . . 
-        . . . . . . . . 2 . . . . . . . 
-        . . . . . 2 . . 2 . . 2 . . . . 
-        . . . . . 2 . . 2 . 2 2 . . . . 
-        . . . . . 2 2 . 2 . 2 . . . . . 
-        . . . . . . 2 . 2 2 2 . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        . . . . . . . 2 2 . . . . . . . 
+        2 2 . . . . . 2 2 . . . . . 2 2 
+        . 2 2 . . . . 2 2 . . . . 2 2 . 
+        . . 2 2 . . . 2 2 . . . 2 2 . . 
+        . . . 2 2 . . 2 2 . . 2 2 . . . 
+        . . . . 2 2 . 2 2 . 2 2 . . . . 
+        . . . . . 2 2 2 2 2 2 . . . . . 
+        . . . . . . 2 2 2 2 . . . . . . 
         . . . . . . 2 2 2 2 . . . . . . 
         . . . . . . . 2 2 . . . . . . . 
-        . . . . . . . . . . . . . . . . 
-        . . . . . . . . . . . . . . . . 
         `, mySprite, 0, 100)
 })
+function createMaze () {
+    if (level == 1) {
+        tiles.setTilemap(tilemap`level1`)
+    } else {
+        tiles.setTilemap(tilemap`level3`)
+    }
+}
+function clearLevel () {
+    for (let value of enemies) {
+        value.destroy()
+    }
+    info.setLife(3)
+}
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestOpen, function (sprite, location) {
-    game.over(true)
+    if (level == 1) {
+        level += 1
+        setupLevel()
+    } else {
+        game.over(true)
+    }
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
     otherSprite.destroy()
@@ -87,7 +111,8 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
 let enemies: Sprite[] = []
 let projectile: Sprite = null
 let mySprite: Sprite = null
-tiles.setTilemap(tilemap`level1`)
+let level = 0
+level = 1
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . c c c c c c c c . . . . 
@@ -106,7 +131,7 @@ mySprite = sprites.create(img`
     . . . . c c c c c c c c . . . . 
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
-tiles.placeOnRandomTile(mySprite, sprites.dungeon.collectibleInsignia)
+setupLevel()
 controller.moveSprite(mySprite)
 scene.cameraFollowSprite(mySprite)
 info.setLife(3)
