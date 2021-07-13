@@ -3,6 +3,13 @@ function setupLevel () {
     game.splash("Level " + level)
     createMaze()
     tiles.placeOnRandomTile(mySprite, sprites.dungeon.collectibleInsignia)
+    if (level == 1) {
+        info.startCountdown(30)
+    } else if (level == 2) {
+        info.startCountdown(45)
+    } else {
+        info.startCountdown(60)
+    }
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     projectile = sprites.createProjectileFromSprite(img`
@@ -81,8 +88,10 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 function createMaze () {
     if (level == 1) {
         tiles.setTilemap(tilemap`level1`)
-    } else {
+    } else if (level == 2) {
         tiles.setTilemap(tilemap`level3`)
+    } else {
+        tiles.setTilemap(tilemap`level8`)
     }
 }
 function clearLevel () {
@@ -93,6 +102,9 @@ function clearLevel () {
 }
 scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestOpen, function (sprite, location) {
     if (level == 1) {
+        level += 1
+        setupLevel()
+    } else if (level == 2) {
         level += 1
         setupLevel()
     } else {
