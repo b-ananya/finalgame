@@ -124,6 +124,9 @@ let enemies: Sprite[] = []
 let projectile: Sprite = null
 let mySprite: Sprite = null
 let level = 0
+game.splash("Use the arrow keys to move ", "to the treasure.")
+game.splash("Press A to shoot", "at the enemies.")
+game.splash("Finish the maze", "before time runs out.")
 level = 1
 mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
@@ -144,7 +147,7 @@ mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
 setupLevel()
-controller.moveSprite(mySprite)
+controller.moveSprite(mySprite, 100, 100)
 scene.cameraFollowSprite(mySprite)
 info.setLife(3)
 game.onUpdateInterval(8000, function () {
