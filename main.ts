@@ -4,11 +4,11 @@ function setupLevel () {
     createMaze()
     tiles.placeOnRandomTile(mySprite, sprites.dungeon.collectibleInsignia)
     if (level == 1) {
-        info.startCountdown(30)
-    } else if (level == 2) {
         info.startCountdown(45)
-    } else {
+    } else if (level == 2) {
         info.startCountdown(60)
+    } else {
+        info.startCountdown(75)
     }
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
