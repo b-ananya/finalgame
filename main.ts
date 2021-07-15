@@ -112,11 +112,15 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestOpen, function (spri
     }
 })
 sprites.onOverlap(SpriteKind.Projectile, SpriteKind.Enemy, function (sprite, otherSprite) {
+    music.pewPew.play()
+    otherSprite.startEffect(effects.fire, 500)
     otherSprite.destroy()
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
+    music.zapped.play()
     info.changeLifeBy(-1)
     otherSprite.setFlag(SpriteFlag.Ghost, true)
+    sprite.startEffect(effects.ashes, 500)
     pause(1000)
     otherSprite.setFlag(SpriteFlag.Ghost, false)
 })
